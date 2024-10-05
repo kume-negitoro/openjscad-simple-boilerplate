@@ -1,0 +1,38 @@
+{
+    "name": "openjscad-simple-boilerplate",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "run-s build dev:watch",
+        "dev:watch": "run-p watch:ts watch:jscad",
+        "watch:ts": "npm run build:ts -- --watch",
+        "watch:jscad": "chokidar 'dist/output.jscad' -c 'npm run build:jscad'",
+        "build": "run-s build:ts build:jscad",
+        "build:ts": "esbuild src/index.ts --bundle --platform=node --outfile=dist/output.jscad",
+        "build:jscad": "jscad dist/output.jscad --of .stl -o dist/output.stl",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "private": true,
+    "description": "",
+    "devDependencies": {
+        "@eslint/js": "^9.10.0",
+        "@jscad/cli": "^2.3.2",
+        "@types/eslint__js": "^8.42.3",
+        "@types/node": "^20.14.11",
+        "chokidar-cli": "^3.0.0",
+        "esbuild": "^0.23.0",
+        "esbuild-register": "^3.5.0",
+        "eslint": "^9.10.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-node": "^11.1.0",
+        "npm-run-all2": "^6.2.2",
+        "prettier": "^3.3.3",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.5.0"
+    },
+    "dependencies": {
+        "@jscad/modeling": "^2.12.2"
+    }
+}
